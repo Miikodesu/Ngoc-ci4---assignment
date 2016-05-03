@@ -1,0 +1,27 @@
+package vn.edu.techkids.views;
+
+import vn.edu.techkids.models.GameObject;
+
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
+
+public class ImageDrawer implements GameDrawer {
+
+    private Image image;
+
+    public ImageDrawer(String url) {
+        try {
+            image = ImageIO.read(new File(url));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void paint(GameObject gameObject, Graphics g) {
+        g.drawImage(this.image, gameObject.getX(), gameObject.getY(),
+                gameObject.getWidth(),gameObject.getHeight(), null);
+    }
+}
